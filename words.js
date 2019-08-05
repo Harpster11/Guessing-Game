@@ -23,7 +23,7 @@ function start (   ) {
     var misses = [];
     var scores = [];    
 
-    for (var i=0; i<blanks; i++){
+    for (var i=0; i<letters.length; i++){
         scores.push("_");
         
     }
@@ -37,32 +37,35 @@ function checkAnswer(letters) {
 
     var letterGuess = false;
 
-    for (var i=0; i<blanks; i++) {
+    for (var i=0; i<letters.length; i++) {
         if(guess[i] == letters[i]) {
             letterGuess == true;
         }
     }
 
 
-    if(letterGuess) {
+    if (letterGuess) {
         for (var i=0; i<blanks; i++){
             if(guess[i] == letters[i]) {
                 scores[i] = letters[i];
             }
-        }   
+        }  
+       
      }
-  else {
-      misses.push(guess);
-      remaining--;
-  }
+     else {
+        misses.push(guess);
+        remaining--;
+    }
+ 
+//   Log the correct answers and remaining guesses to the HTML
     document.getElementById("answer").innerHTML = scores;
     document.getElementById("remaining").innerHTML = remaining;
- console.log(scores);
+    console.log(scores);
         }
 
     
 function gameOver(){
-    console.log("Wins:" + wins +  " Losses: " + losses + " Gusseses Remaining: " + remaining);
+    console.log("Wins:" + wins +  " Losses: " + losses + " Guesseses Remaining: " + remaining);
 
     document.getElementById("remaining").innerHTML = remaining;
     document.getElementById("scores").innerHTML = scores;
@@ -73,14 +76,15 @@ function gameOver(){
         alert("Winner!");
 
     document.getElementById("Wins").innerHTML = wins;
+        // restart game
         start();
     }
     else {
         losses++;
         alert("You Crash, You Die!");
-
+            // update wins
         document.getElementById("Losses").innerHTML = losses;
-        
+            // update losses
         start();
     }
 
