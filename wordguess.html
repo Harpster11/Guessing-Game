@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Airplane Guess</title>
 </head>
 <body>
@@ -16,20 +17,38 @@
     <div class="card">
         <div class="card-body">
         <h3>Guess or Crash!</h3>
-        <p>_ _ _ _ _ _</p>
+        <p id="answer">_ _ _ _ _ _</p>
         </div>
     </div>
     <div class="card">
             <div class="card-body">
-            <h3>Remaining Guesses</h3>
-             <p>""</p>
+            <h4>Wrong Letters</h4>
+            <p id="misses"></p>
+            </div>
+        </div>
+    <div class="card">
+            <div class="card-body">
+            <p>Remaining Guesses</p>
+                <p id="remaining"></p>
                  </div>
      <div class="card">
          <div class="card-body">
-            <h3>Wrong Answers</h3>
+            <p>Wrong Answers</p>
                     <p>""</p>
             </div>
             </div>
+            <div class="card">
+                    <div class="card-body">
+                       <p id="wins">Wins</p>
+                               <p>""</p>
+                       </div>
+                       </div>
+                       <div class="card">
+                            <div class="card-body">
+                               <p>Losses</p>
+                                       <p id="losses">""</p>
+                               </div>
+                               </div>
     </div>
 </div>
     <script src=words.js></script>
