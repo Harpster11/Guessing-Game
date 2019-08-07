@@ -1,5 +1,5 @@
 // create variables
-var words = ["boeing","airbus","douglas","cessna","lockheed","bombardier","beechcraft","embraer","saab","aerospatile","fokker","dehavilland"];
+var words = ["boeing", "airbus", "douglas", "cessna", "lockheed", "bombardier", "beechcraft", "embraer", "saab", "aerospatile", "fokker", "dehavilland"];
 var answer = "";
 var letters = [];
 var misses = [];
@@ -7,65 +7,73 @@ var scores = [];
 var blanks = 0;
 var remaining = 9;
 var guess = [];
-var wins= 0;
-var losses= 0;
+var wins = 0;
+var losses = 0;
 
-// create functions
+// create random word selector function
 
-function start (   ) {
+function start() {
     answer = words[Math.floor(Math.random() * words.length)];
     console.log(answer);
     letters = answer.split("");
     console.log(letters);
     blanks = letters.length;
-    
+
+
     var remaining = 0;
     var misses = [];
-    var scores = [];    
+    var scores = [];
 
-    for (var i=0; i<letters.length; i++){
+    // rewrite the HTML to reflect gameplay   
+
+    for (var i = 0; i < blanks; i++) {
+        // var underScore = document.createElement("span");
+        // underScore.textContent = " _ ";
+        // document.getElementById("answer").appendChild(underScore);
         scores.push("_");
-        
-    }
-    console.log(scores);
-// rewrite the HTML to reflect gameplay
+        }
+   
+        document.getElementById("answer").textContent=scores;
 
-    
 }
 
-function checkAnswer(letters) {
+function checkAnswer(guess) {
 
     var letterGuess = false;
-
-    for (var i=0; i<letters.length; i++) {
-        if(guess[i] == letters[i]) {
-            letterGuess == true;
+    for (var i = 0; i < blanks; i++); {
+        if (guess[i] == letters[i]); {
+            letterGuess = true;
+            console.log(letterGuess);
         }
     }
 
 
     if (letterGuess) {
-        for (var i=0; i<blanks; i++){
-            if(guess[i] == letters[i]) {
+        for (var i = 0; i < blanks; i++) {
+
+            if (guess[i] == letters[i]); {
+                console.log("guess: " + guess[i])
                 scores[i] = letters[i];
+                console.log(scores);
             }
-        }  
-       
-     }
-     else {
+        }
+        document.getElementById("answer").textContent=scores;
+
+
+    }
+    else {
         misses.push(guess);
         remaining--;
+        console.log(remaining);
     }
- 
-//   Log the correct answers and remaining guesses to the HTML
-    document.getElementById("answer").innerHTML = scores;
-    document.getElementById("remaining").innerHTML = remaining;
-    console.log(scores);
-        }
 
-    
-function gameOver(){
-    console.log("Wins:" + wins +  " Losses: " + losses + " Guesseses Remaining: " + remaining);
+    //   Log the correct answers and remaining guesses to the HTML
+    document.getElementById("remaining").innerHTML = remaining;
+}
+
+
+function gameOver() {
+    console.log("Wins: " + wins + " Losses: " + losses + " Guesseses Remaining: " + remaining);
 
     document.getElementById("remaining").innerHTML = remaining;
     document.getElementById("scores").innerHTML = scores;
@@ -75,16 +83,14 @@ function gameOver(){
         wins++;
         alert("Winner!");
 
-    document.getElementById("Wins").innerHTML = wins;
+        document.getElementById("Wins").innerHTML = wins;
         // restart game
         start();
     }
     else {
         losses++;
         alert("You Crash, You Die!");
-            // update wins
         document.getElementById("Losses").innerHTML = losses;
-            // update losses
         start();
     }
 
@@ -98,7 +104,7 @@ start();
 
 // keyboard functions
 
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
     var guess = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(guess);
     checkAnswer(guess);
