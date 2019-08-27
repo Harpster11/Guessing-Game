@@ -6,7 +6,6 @@ var misses = [];
 var scores = [];
 var blanks = 0;
 var remaining = 9;
-var guess = [];
 var wins = 0;
 var losses = 0;
 
@@ -19,10 +18,11 @@ function start() {
     console.log(letters);
     blanks = letters.length;
 
-
-    var remaining = 0;
     var misses = [];
     var scores = [];
+    var remaining = 9;
+   
+  
 
     // rewrite the HTML to reflect gameplay   
 
@@ -31,33 +31,38 @@ function start() {
         // underScore.textContent = " _ ";
         // document.getElementById("answer").appendChild(underScore);
         scores.push("_");
+        
         }
    
-        document.getElementById("answer").textContent=scores;
-
+        document.getElementById("answer").innerHTML = scores.join(" ");
+        document.getElementById("remaining").innerHTML = remaining;
+        document.getElementById("wins").innerHTML = wins;
+        document.getElementById("losses").innerHTML = losses;
 }
+
+
 
 function checkAnswer(guess) {
 
     var letterGuess = false;
-    for (var i = 0; i < blanks; i++); {
-        if (guess[i] == letters[i]); {
+    for (var i = 0; i < blanks; i++) {
+        if (letters[i] == guess) {
             letterGuess = true;
+            console.log("Letter Found" + guess);
             console.log(letterGuess);
         }
     }
 
-
-    if (letterGuess) {
+    if(letterGuess) {
         for (var i = 0; i < blanks; i++) {
 
-            if (guess[i] == letters[i]); {
-                console.log("guess: " + guess[i])
-                scores[i] = letters[i];
+            if (letters[i] == guess) {
+                console.log("guess: " + guess);
+                scores[i] = guess;
                 console.log(scores);
             }
         }
-        document.getElementById("answer").textContent=scores;
+        document.getElementById("answer").innerHTML=scores.join(" ");
 
 
     }
@@ -65,15 +70,15 @@ function checkAnswer(guess) {
         misses.push(guess);
         remaining--;
         console.log(remaining);
+        console.log(misses);
     }
-
+    document.getElementById("misses").innerHTML=misses.join(" ");
     //   Log the correct answers and remaining guesses to the HTML
-    document.getElementById("remaining").innerHTML = remaining;
 }
 
 
 function gameOver() {
-    console.log("Wins: " + wins + " Losses: " + losses + " Guesseses Remaining: " + remaining);
+    console.log("Wins: " + wins + " Losses: " + losses + " Guesses Remaining: " + remaining);
 
     document.getElementById("remaining").innerHTML = remaining;
     document.getElementById("scores").innerHTML = scores;
@@ -87,7 +92,7 @@ function gameOver() {
         // restart game
         start();
     }
-    else {
+    else if (remaining == 0) {
         losses++;
         alert("You Crash, You Die!");
         document.getElementById("Losses").innerHTML = losses;
@@ -107,5 +112,6 @@ start();
 document.onkeyup = function (event) {
     var guess = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(guess);
-    checkAnswer(guess);
+    checkAnswer(guess); 
+    gameOver();
 }
