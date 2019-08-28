@@ -18,9 +18,9 @@ function start() {
     console.log(letters);
     blanks = letters.length;
 
-    var misses = [];
-    var scores = [];
-    var remaining = 9;
+    misses = [];
+    scores = [];
+    remaining = 9;
    
   
 
@@ -80,22 +80,22 @@ function checkAnswer(guess) {
 function gameOver() {
     console.log("Wins: " + wins + " Losses: " + losses + " Guesses Remaining: " + remaining);
 
-    document.getElementById("remaining").innerHTML = remaining;
-    document.getElementById("scores").innerHTML = scores;
-    document.getElementById("misses").innerHTML = misses;
+    // document.getElementById("remaining").innerHTML = remaining;
+    // document.getElementById("scores").innerHTML = scores;
+    // document.getElementById("misses").innerHTML = misses;
 
     if (letters.toString() == scores.toString()) {
         wins++;
         alert("Winner!");
 
-        document.getElementById("Wins").innerHTML = wins;
+        document.getElementById("wins").innerHTML = wins;
         // restart game
         start();
     }
     else if (remaining == 0) {
         losses++;
         alert("You Crash, You Die!");
-        document.getElementById("Losses").innerHTML = losses;
+        document.getElementById("losses").innerHTML = losses;
         start();
     }
 
