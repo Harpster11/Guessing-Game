@@ -12,12 +12,25 @@
      <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                   <h1 class="display-4">Guess The Airplane!</h1>
-                  <p class="lead">The word is one of the major aircraft manufacturers of the 20th century!</p>
-               
+                  <p class="lead"><strong>Type any letter to guess the name, manufacturer or nickname of the pictured airplane!</strong></p> 
+                  <p><strong>Pull rank in flight school as you answer correctly!</strong></p>
+     <div class="row">
+     <div class="col-md-4">          
     <div class="card">
         <div class="card-body">
-        <h3>Guess or Crash!</h3>
-        <p id="answer">_ _ _ _ _ _</p>
+        <h3>Guess or Face Demotion!</h3>
+        <h5>Airplane</h5>
+        <p id="answerPlane">_ _ _ _ _ _</p>
+        <h5>Manufacturer</h5>
+        <p id="answerMfg">_ _ _ _ _ _</p>
+        <h5>Nickname</h5>
+        <p id="answerNick">_ _ _ _ _ _</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+        <h4>Rank</h4>
+        <h5 id="rank"></h5>
         </div>
     </div>
     <div class="card">
@@ -44,6 +57,13 @@
                                
         </div>
 
+    </div>
+        <div class="col-md-8">
+            <div class="card">
+                <img id="image" src="..." alt="Airplane Image" style="height:600px"> 
+            </div>
+        </div>
+    </div>
     </div>
 </div>
     <script src=words.js></script>
