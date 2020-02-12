@@ -1,5 +1,5 @@
 # WWII Airplane Guess
- Built in JQuery and customized on behalf of Houston Wing CAF
+ Built in native JavaScript and customized on behalf of Houston Wing CAF
 
 ### How do I guess?
 To guess a letter or number related to the airplane shown in the photo, press any key on your keyboard or touch screen keypad. 
